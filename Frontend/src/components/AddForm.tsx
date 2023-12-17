@@ -12,6 +12,7 @@ const AddForm: React.FC<Props> = ({ fetchCars }) => {
     Model_id: 0,
     Production_year: 0,
     Color: '',
+    url:'',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +31,7 @@ const AddForm: React.FC<Props> = ({ fetchCars }) => {
         Model_id: 0,
         Production_year: 0,
         Color: '',
+        url:'',
       });
 
       fetchCars();
@@ -89,6 +91,16 @@ const AddForm: React.FC<Props> = ({ fetchCars }) => {
           type="text"
           name="Color"
           value={newCar.Color}
+          onChange={handleChange}
+          className="border w-full p-2"
+        />
+      </label>
+      <label className="block mb-2">
+        Url:
+        <input
+          type="text"
+          name="url"
+          value={newCar.url}
           onChange={handleChange}
           className="border w-full p-2"
         />

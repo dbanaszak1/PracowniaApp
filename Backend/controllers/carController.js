@@ -12,15 +12,15 @@ const getCars = (db) => (req, res) => {
 
 const createCar = (db) => async (req, res) => {
   console.log('Received data:', req.body);
-  const { Brand_id, Engine_id, Model_id, Production_year, Color } = req.body;
+  const { Brand_id, Engine_id, Model_id, Production_year, Color, url } = req.body;
 
-  if (!Brand_id || !Engine_id || !Model_id || !Production_year || !Color) {
+  if (!Brand_id || !Engine_id || !Model_id || !Production_year || !Color || !url) {
     return res.status(400).json({ error: 'All fields required' });
   }
 
   try {
-    const sql = 'INSERT INTO car (Brand_id, Engine_id, Model_id, Production_year, Color) VALUES (?, ?, ?, ?, ?)';
-    const values = [Brand_id, Engine_id, Model_id, Production_year, Color];
+    const sql = 'INSERT INTO car (Brand_id, Engine_id, Model_id, Production_year, Color, url) VALUES (?, ?, ?, ?, ?, ?)';
+    const values = [Brand_id, Engine_id, Model_id, Production_year, Color, url];
 
     await db.query(sql, values);
 
@@ -34,20 +34,20 @@ const createCar = (db) => async (req, res) => {
 
 const updateCar = (db) => async (req, res) => {
   const { carId } = req.params; 
-  const { Brand_id, Engine_id, Model_id, Production_year, Color } = req.body;
+  const { Brand_id, Engine_id, Model_id, Production_year, Color, url } = req.body;
   console.log(carId);
   console.log(req.body);
 
-  if (!Brand_id || !Engine_id || !Model_id || !Production_year || !Color) {
+  if (!Brand_id || !Engine_id || !Model_id || !Production_year || !Color || !url) {
     return res.status(400).json({ error: 'All fields required' });
   }
 
   try {
     const sql = 
     `UPDATE car 
-      SET Brand_id = ?, Engine_id = ?, Model_id = ?, Production_year = ?, Color = ?
+      SET Brand_id = ?, Engine_id = ?, Model_id = ?, Production_year = ?, Color = ?, url = ?
       WHERE Car_id = ?;`;
-    const values = [Brand_id, Engine_id, Model_id, Production_year, Color, carId];
+    const values = [Brand_id, Engine_id, Model_id, Production_year, Color, url, carId];
 
     const results = await db.query(sql, values);
 

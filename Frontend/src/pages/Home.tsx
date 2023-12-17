@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TopImage from '../components/TopImage';
 import NavBar from '../components/NavBar';
+import CarCard from '../components/CarCard';
 
 interface Car {
   Car_id: number;
+  Name: string;
   BrandName: string;
   Model: string;
   Production_year: number;
   Color: string;
+  url: string;
   Seats: number;
 }
 
@@ -22,17 +25,12 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <NavBar/>
       <TopImage/>
-      <ul>
-        {cars.map((car) => (
-          <li key={car.Car_id}>
-            <strong>{car.BrandName} {car.Model}</strong> ({car.Production_year}), Color: {car.Color}, Seats: {car.Seats}
-          </li>
-        ))}
-      </ul>
-
+      <div className="w-2/3 m-auto">
+        <CarCard cars={cars}/>
+      </div>
     </div>
   );
 };
