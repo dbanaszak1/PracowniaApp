@@ -88,4 +88,15 @@ const deleteCar = (db) => async (req, res) => {
   }
 };
 
-module.exports = { getCars, createCar, updateCar, deleteCar };
+const getOffer2 = (db) => (req, res) => {
+  db.query('SELECT * FROM offer;', (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(results);
+    }
+  });
+};
+
+module.exports = { getCars, createCar, updateCar, deleteCar, getOffer2 };
