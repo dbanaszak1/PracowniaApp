@@ -1,0 +1,22 @@
+*Użytkownik może wybrać samochód do wypożyczenia
+*Samochód:
+    - Samochod_id PK
+    - Marka_id FK
+    - Silnik_id FK
+    - Model_id FK
+    - Rok produkcji
+    - Kolor
+*Silniki:
+    - Silnik_id PK
+    - Moc
+    - Producent
+*Marki:
+    - Marka_id PK
+    - nazwa
+*Modele:
+    - Model_id PK
+    - nazwa
+    - miejsca
+*Oferta:
+    - Samochod_id FK PK
+    - Cena
