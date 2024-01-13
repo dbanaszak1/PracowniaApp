@@ -99,4 +99,31 @@ const getOffer2 = (db) => (req, res) => {
   });
 };
 
-module.exports = { getCars, createCar, updateCar, deleteCar, getOffer2 };
+const getCarsPage = (db) => async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1; 
+    const pageSize = parseInt(req.query.pageSize) || 10;
+
+    const offset = (page - 1) * pageSize;
+
+    const query = `SELECT * FROM car JOIN brands, engine, models WHERE car.Brand_id = brands.Brand_id and car.Model_id = models.Model_id and car.Engine_id = engine.Engine_id ORDER BY Car_id LIMIT ${pageSize} OFFSET ${offset};`;
+
+    const results = await new Promise((resolve, reject) => {
+      db.query(query, (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+
+    res.json(results);
+  } catch (error) {
+    console.error('Error executing query:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
+module.exports = { getCars, createCar, updateCar, deleteCar, getOffer2, getCarsPage };

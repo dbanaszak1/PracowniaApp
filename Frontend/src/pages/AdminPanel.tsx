@@ -4,6 +4,7 @@ import CarList from '../components/CarList';
 import AddForm from '../components/AddForm';
 import DeleteCar from '../components/DeleteCar';
 import EditForm from '../components/EditForm';
+import CarsTable from '../components/CarsTable';
 
 interface Car {
   Car_id: number;
@@ -37,6 +38,7 @@ const AdminPanel = () => {
       <AddForm fetchCars={fetchCars} />
       <DeleteCar/>
       <EditForm fetchCars={fetchCars}/>
+      <CarsTable/>
     </div>
   );
 };

@@ -22,7 +22,6 @@ const Offer: React.FC = () => {
         const response = await axios.get(`http://localhost:3000/api/offer`);
         const offers: OfferData[] = response.data;
 
-        // Znajdź ofertę dla określonego Car_id
         const selectedOffer = offers.find((o) => o.Car_id === parseInt(Car_id, 10));
 
         if (selectedOffer) {

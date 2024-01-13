@@ -1,4 +1,9 @@
-*Użytkownik może wybrać samochód do wypożyczenia
+*1 oferta <-> 1 samochod 
+*1 silnik <-> wiele samochodow
+*1 model <-> wiele samochodow 
+*1 brand <-> wiele modeli
+...
+Tabele: (rozwinąc pod projekt 3)
 *Samochód:
     - Samochod_id PK
     - Marka_id FK
@@ -15,8 +20,17 @@
     - nazwa
 *Modele:
     - Model_id PK
+    - Brand_id FK
     - nazwa
     - miejsca
 *Oferta:
     - Samochod_id FK PK
     - Cena
+
+*/ wyswietla strone glowna - wyświetla oferty samochodow later(edytowac NavBar, moze dodać jakis Motion)
+*/admin daje narzedzia do edycji bazy danych later(dodac wiecej ograniczen)
+*/offfer/:Car_id wyświetla oferte dla samochodu later(pass more data, front)
+*autoryzacja (admin/user)
+*contact (mail form)
+
+
