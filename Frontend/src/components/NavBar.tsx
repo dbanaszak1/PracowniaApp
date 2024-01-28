@@ -7,7 +7,7 @@ const NavBar = () => {
       </div>
       <div className='text-2xl md:w-1/2 text-end px-2 md:px-10'>
         <div className='inline-flex'>
-          <button>Log in</button>      
+          <a href='/login'><button>Log in</button> </a>     
         </div>
       </div>
     </nav>
