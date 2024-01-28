@@ -10,6 +10,22 @@ const getCars = (db) => (req, res) => {
   });
 };
 
+const getCarDetails = (db) => (req, res) => {
+  const { carId } = req.params;
+  const sql = 'SELECT * FROM car JOIN brands, engine, models WHERE car.Brand_id = brands.Brand_id and car.Model_id = models.Model_id and car.Engine_id = engine.Engine_id and Car_id = ?;' ;  
+  db.query(sql, carId , (err, results) => { 
+    if(err) {
+      console.error('Error: ',err)
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+    else {
+      res.json(results)
+    }
+  });
+
+
+}
+
 const createCar = (db) => async (req, res) => {
   console.log('Received data:', req.body);
   const { Brand_id, Engine_id, Model_id, Production_year, Color, url } = req.body;
@@ -126,4 +142,4 @@ const getCarsPage = (db) => async (req, res) => {
 };
 
 
-module.exports = { getCars, createCar, updateCar, deleteCar, getOffer2, getCarsPage };
+module.exports = { getCars, getCarDetails, createCar, updateCar, deleteCar, getOffer2, getCarsPage };

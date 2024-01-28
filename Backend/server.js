@@ -36,6 +36,7 @@ app.delete('/admin/cars/:carId', carController.deleteCar(db));
 app.put('/admin/cars/:carId', carController.updateCar(db));
 app.get('/api/offer',carController.getOffer2(db));
 app.get('/api/cars2', carController.getCarsPage(db));
+app.get('/api/details/:carId', carController.getCarDetails(db));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
