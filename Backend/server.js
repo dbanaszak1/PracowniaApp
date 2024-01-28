@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const carController = require('./controllers/carController');
+const dotenv = require('dotenv');
+
+dotenv.config({path: './.env'})
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,10 +15,10 @@ app.use(express.json());
 
 // MySQL Connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'carsdata',
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE,
 });
 
 db.connect((err) => {
