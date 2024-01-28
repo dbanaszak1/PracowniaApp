@@ -13,7 +13,7 @@ interface Car {
     Seats: number;
   }
   
-  const CarCard: React.FC = () => {
+  const CarCard = () => {
     const [cars, setCars] = useState<Car[]>([]);
   
     useEffect(() => {
