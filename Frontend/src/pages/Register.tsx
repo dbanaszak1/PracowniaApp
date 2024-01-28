@@ -32,7 +32,7 @@ const Register = () => {
       if (response.data.error) {
         console.error('Błąd:', response.data.error);
     } else {
-        console.log('Odpowiedź z serwera:', response.data.message);
+        console.log('Odpowiedź z serwera:', response);
     }
     } catch (error) {
       console.error('Error:', error);

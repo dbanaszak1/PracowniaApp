@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Tutaj można dodać logikę obsługi formularza, np. wysłanie danych do serwera
+    const data = {
+      email,
+      password,
+    }
+  try {
+    const response = await axios.post('http://localhost:3000/auth/login',data );
+    if (response.data.error) {
+      console.error('Błąd:', response.data.error);
+  } else {
+      console.log('Odpowiedź z serwera:', response);
+      setMessage(response.data);
+  }
+  } catch (error) {
+    console.error('Error:', error);
+  }
     console.log('Submitted:', { email, password });
   };
 
@@ -55,7 +71,8 @@ const LoginForm = () => {
           </button>
 
         </div>
-      </form>
+      </form> 
+      {message && <p className={message === 'Logged in' ? 'text-green-500 pt-2':'text-red-500 pt-2'}>{message}</p>}
       <div className="py-4">
           <span>Don't have account?</span>
           <a href="/register">
@@ -64,7 +81,7 @@ const LoginForm = () => {
             </button>
           </a>        
       </div>
-
+     
     </div>
   );
 };

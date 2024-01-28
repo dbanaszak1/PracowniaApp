@@ -42,6 +42,7 @@ app.get('/api/offer',carController.getOffer2(db));
 app.get('/api/cars2', carController.getCarsPage(db));
 app.get('/api/details/:carId', carController.getCarDetails(db));
 app.post('/auth/register', authController.register(db));
+app.post('/auth/login', authController.login(db));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
