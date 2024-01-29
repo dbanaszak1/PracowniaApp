@@ -6,6 +6,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -33,6 +34,7 @@ const Register = () => {
         console.error('Błąd:', response.data.error);
     } else {
         console.log('Odpowiedź z serwera:', response);
+        setMessage(response.data);
     }
     } catch (error) {
       console.error('Error:', error);
@@ -95,6 +97,7 @@ const Register = () => {
           </button>
         </div>
       </form>
+      {message && <p className={message === 'Registered successfully!' ? 'text-green-500 pt-2':'text-red-500 pt-2'}>{message}</p>}
     </div>
   );
 };

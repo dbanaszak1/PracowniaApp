@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const carController = require('./controllers/carController');
 const authController = require('./controllers/authController');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({path: './.env'})
 
@@ -13,6 +14,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 // MySQL Connection
 const db = mysql.createConnection({

@@ -1,6 +1,13 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+const maxAge =24 * 3 * 60 * 60;
+const createToken = ( email ) => {
+    return jwt.sign({ email }, 'secret code 1', {
+        expiresIn: maxAge
+    } );
+}
+
 
 const register = (db) => async = (req,res) => {
     const {username, email, password} = req.body;
@@ -9,9 +16,7 @@ const register = (db) => async = (req,res) => {
            console.error(error); 
         }
         else if(results.length > 0) {
-            res.status(200).json('Email already in use')
-            console.log('Email already in use')
-            return
+            return res.status(200).json('Email already in use')
         }
         let hashedPassword = bcrypt.hashSync(password, 8);
         db.query("INSERT INTO users SET ?", {username: username, email: email, password: hashedPassword}, (err, results) => {
@@ -19,8 +24,9 @@ const register = (db) => async = (req,res) => {
                 console.error(err);
             }
             else{
-                res.status(200).json('Registered successfully!')
-                console.log('Registered successfully!')
+                const token = createToken(email);
+                res.cookie('jwt', token, {httpOnly: true, secure: true, maxAge: maxAge * 1000});
+                res.status(200).json('Registered successfully!');
             }
         })
     })
