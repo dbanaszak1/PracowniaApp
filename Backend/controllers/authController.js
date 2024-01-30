@@ -1,36 +1,59 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+
 const maxAge =24 * 3 * 60 * 60;
 const createToken = ( email ) => {
-    return jwt.sign({ email }, 'secret code 1', {
+    return jwt.sign({ email }, 'secret', {
         expiresIn: maxAge
     } );
 }
 
 
-const register = (db) => async = (req,res) => {
-    const {username, email, password} = req.body;
-    db.query("SELECT email FROM users WHERE email = ?",[email], async (error, results) => {
-        if(error) {
-           console.error(error); 
+const register = (db) => async (req, res) => {
+    const { username, email, password } = req.body;
+
+    try {
+        // Check if email is already in use
+        const emailCheckResults = await new Promise((resolve, reject) => {
+            db.query("SELECT email FROM users WHERE email = ?", [email], (error, results) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+
+        if (emailCheckResults.length > 0) {
+            return res.status(200).json('Email already in use');
         }
-        else if(results.length > 0) {
-            return res.status(200).json('Email already in use')
-        }
-        let hashedPassword = bcrypt.hashSync(password, 8);
-        db.query("INSERT INTO users SET ?", {username: username, email: email, password: hashedPassword}, (err, results) => {
-            if(err) {
-                console.error(err);
-            }
-            else{
-                const token = createToken(email);
-                res.cookie('jwt', token, {httpOnly: true, secure: true, maxAge: maxAge * 1000});
-                res.status(200).json('Registered successfully!');
-            }
-        })
-    })
-}
+
+        // Hash the password
+        const hashedPassword = bcrypt.hashSync(password, 8);
+
+        // Insert new user into the database
+        const insertUserResults = await new Promise((resolve, reject) => {
+            db.query("INSERT INTO users SET ?", { username: username, email: email, password: hashedPassword }, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+
+        // Generate a token
+        const token = createToken(email);
+
+        // Set the JWT cookie and send success response
+        res.cookie('jwt', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000,secure: true, sameSite: 'none' });
+        res.status(201).json('Registered successfully!');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json('Internal Server Error');
+    }
+};
 
 const login = (db) => async (req, res) => {
     const {email, password} = req.body;

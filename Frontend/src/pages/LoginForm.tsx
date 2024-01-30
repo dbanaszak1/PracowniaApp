@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NavBar from '../components/NavBar';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -35,7 +36,11 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md mt-10">
+    <>
+    <div className="pb-40">
+      <NavBar/>
+    </div>
+      <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md mt-10">
       <h2 className="text-2xl font-semibold mb-4">Log In</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -83,6 +88,8 @@ const LoginForm = () => {
       </div>
      
     </div>
+    </>
+    
   );
 };
 

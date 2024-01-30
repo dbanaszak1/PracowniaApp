@@ -29,17 +29,17 @@ const Register = () => {
       }
     try {
       // Data send to server
-      const response = await axios.post('http://localhost:3000/auth/register',data );
+      const response = await axios.post('http://localhost:3000/auth/register',data, { withCredentials: true });
       if (response.data.error) {
         console.error('Błąd:', response.data.error);
     } else {
         console.log('Odpowiedź z serwera:', response);
         setMessage(response.data);
+        if(response.data === 'Registered successfully!') window.location.replace('/'); //redirect to login page
     }
     } catch (error) {
       console.error('Error:', error);
     }
-    console.log('Submitted:', { username, email, password });
   };
 
   return (
