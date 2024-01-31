@@ -3,6 +3,7 @@ import axios from 'axios';
 import TopImage from '../components/TopImage';
 import NavBar from '../components/NavBar';
 import CarCard from '../components/CarCard';
+import CoolSlider from '../components/CoolSlider';
 
 interface Car {
   Car_id: number;
@@ -31,6 +32,7 @@ const Home: React.FC = () => {
       <div className="w-2/3 m-auto">
         <CarCard cars={cars}/>
       </div>
+      <CoolSlider/>
     </div>
   );
 };

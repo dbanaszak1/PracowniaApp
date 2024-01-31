@@ -22,12 +22,13 @@ const LoginForm = () => {
       password,
     }
   try {
-    const response = await axios.post('http://localhost:3000/auth/login',data );
+    const response = await axios.post('http://localhost:3000/auth/login',data, { withCredentials: true } );
     if (response.data.error) {
       console.error('Błąd:', response.data.error);
   } else {
       console.log('Odpowiedź z serwera:', response);
       setMessage(response.data);
+      if(response.data === 'Logged in') window.location.replace('/'); //redirect to main page after login
   }
   } catch (error) {
     console.error('Error:', error);
@@ -70,7 +71,7 @@ const LoginForm = () => {
         <div className="mt-4">
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+            className='border-orange-600 border-[1px] p-2 m-auto text-orange-600 font-semibold hover:bg-orange-600 hover:text-white duration-500 rounded-lg'
           >
             Log In
           </button>
@@ -79,7 +80,7 @@ const LoginForm = () => {
       </form> 
       {message && <p className={message === 'Logged in' ? 'text-green-500 pt-2':'text-red-500 pt-2'}>{message}</p>}
       <div className="py-4">
-          <span>Don't have account?</span>
+          <span>Don't have an account?</span>
           <a href="/register">
             <button className='px-2 border-[1px] mx-2 rounded-xl'>
                 Register here!

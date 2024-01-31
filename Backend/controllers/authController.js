@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 
-const maxAge =24 * 3 * 60 * 60;
+const maxAge =3 * 60 * 60;
 const createToken = ( email ) => {
     return jwt.sign({ email }, 'secret', {
         expiresIn: maxAge
@@ -47,7 +47,7 @@ const register = (db) => async (req, res) => {
         const token = createToken(email);
 
         // Set the JWT cookie and send success response
-        res.cookie('jwt', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000,secure: true, sameSite: 'none' });
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000,secure: true, sameSite: 'none' });
         res.status(201).json('Registered successfully!');
     } catch (error) {
         console.error(error);
@@ -65,13 +65,14 @@ const login = (db) => async (req, res) => {
             return res.send('Failed to log in');
         }
         else{
-            console.log(results[0].password)
             bcrypt.compare(password, results[0].password, function(error, response) {
                 if(response){
-                    return res.send('Logged in');
+                    const token = createToken(email);
+                    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000,secure: true, sameSite: 'none' });
+                    res.status(201).json('Logged in');
                 }
                 else{
-                    return res.send('Failed to log in');
+                    return res.send('Failed to log in :(');
                 }
             });
         }

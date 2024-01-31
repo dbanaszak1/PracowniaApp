@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NavBar from '../components/NavBar';
 
 const Register = () => {
 //changes handler
@@ -43,8 +44,12 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md mt-10">
-      <h2 className="text-2xl font-semibold mb-4">Register</h2>
+    <>
+    <div className="pb-40">
+      <NavBar/>
+    </div>
+    <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-2xl mt-10">
+      <h2 className="text-2xl font-semibold mb-4">Sign up</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-600 mb-2">
@@ -91,14 +96,15 @@ const Register = () => {
         <div className="mt-4">
           <button
             type="submit"
-            className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+            className='border-orange-600 border-[1px] p-2 m-auto text-orange-600 font-semibold hover:bg-orange-600 hover:text-white duration-500 rounded-lg'
           >
-            Register
+            Sign up
           </button>
         </div>
       </form>
       {message && <p className={message === 'Registered successfully!' ? 'text-green-500 pt-2':'text-red-500 pt-2'}>{message}</p>}
     </div>
+    </>
   );
 };
 
