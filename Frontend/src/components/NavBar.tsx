@@ -8,12 +8,12 @@ const NavBar = () => {
       <div className='text-2xl md:w-1/2 text-end px-2 md:px-10'>
         <div className='inline-flex'>
           <a href='/register'>
-            <button className='text-lg font-semibold text-gray-600 px-4 hover:text-orange-600 duration-500'>
+            <button className='text-sm lg:text-lg font-semibold text-gray-600 px-4 hover:text-orange-600 duration-500'>
             SIGN UP
             </button>
           </a> 
           <a href='/login'>
-            <button className='text-lg font-semibold text-gray-600 border-orange-600 border-[1px] px-3 rounded-full hover:bg-orange-600 hover:text-white hover:scale-110 duration-500'>
+            <button className='text-sm lg:text-lg font-semibold text-gray-600 border-orange-600 border-[1px] px-3 rounded-full hover:bg-orange-600 hover:text-white hover:scale-110 duration-500'>
             LOG IN
             </button>
           </a>              
