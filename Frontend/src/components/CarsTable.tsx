@@ -12,18 +12,43 @@ interface Car {
   Seats: number;
 }
 
+interface CarData {
+  Car_id: number;
+  Brand_id: number;
+  Engine_id: number;
+  Model_id: number;
+  Name: string;
+  BrandName: string;
+  Production_year: number;
+  Color: string;
+  Seats: number;
+  url: string;
+}
+
 const CarsTable: React.FC = () => {
   const [cars, setCars] = useState<Car[]>([]);
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [carToDelete, setCarToDelete] = useState(0);
-  const [carToEdit, setCarToEdit] = useState(0);
   const pageSize = 6; 
+  const [carData, setCarData] = useState<CarData[]>([]);
 
   useEffect(() => {
     fetchCars();
   }, [page]);
+
+
+  const openEditForm = async (car: number) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/details/${car}`);
+      setCarData(response.data);  
+      console.log(response.data);  
+      setEditOpen(!editOpen)
+    } catch (error) {
+      console.error('Error fetching car:', error);
+    }
+  }
 
   const fetchCars = async () => {
     try {
@@ -49,7 +74,12 @@ const CarsTable: React.FC = () => {
 
   return (
    <div className="flex items-center justify-center py-6 relative">
-      <EditForm fetchCars={fetchCars} isOpen={editOpen} setIsOpen={setEditOpen} carToEdit={carToEdit}/>      
+    {
+      (editOpen===true && carData.length!=0) 
+      ? (<EditForm fetchCars={fetchCars} isOpen={editOpen} setIsOpen={setEditOpen} carToEdit={carData[0].Car_id } Brand_id={carData[0].Brand_id} Engine_id={carData[0].Engine_id} Model_id={carData[0].Model_id} Name={carData[0].Name} BrandName={carData[0].BrandName} Production_year={carData[0].Production_year} Color={carData[0].Color} Seats={carData[0].Seats} url={carData[0].url}
+        /> )    
+      : <div></div> 
+    } 
     <div className={isOpen===false ? 'hidden' : 'absolute top-1/2 left-1/2 -ml-48 -mt-32 bg-white border-[1px] w-96 h-40 rounded-xl overflow-hidden'}>
       <h2 className='text-2xl text-center font-semibold px-16 text-red-500 pt-4'>Are you sure you want to delete this car?</h2>
       <div className='flex place-content-center'>
@@ -81,7 +111,7 @@ const CarsTable: React.FC = () => {
              <td className="py-2 px-5 border">{car.Color}</td>
              <td className="py-2 px-5 border">{car.Seats}</td>
              <td className="py-2 px-5 border inline-flex">
-            <button onClick={()=>{setEditOpen(!editOpen),setCarToEdit(car.Car_id)}} className="border-[1px] inline-flex px-2 font-bold rounded-md bg-blue-400 text-white hover:bg-blue-600 hover:scale-110 duration-200">Edit
+              <button onClick={()=>openEditForm(car.Car_id)} className="border-[1px] inline-flex px-2 font-bold rounded-md bg-blue-400 text-white hover:bg-blue-600 hover:scale-110 duration-200">Edit
                 <svg className='h-5 w-5 mx-1 my-1' fill='CurrentColor' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
               </button>
               <button onClick={()=>{setIsOpen(!isOpen),setCarToDelete(car.Car_id)}} className="border-[1px] inline-flex px-2 font-bold rounded-md bg-red-400 text-white ml-2 hover:bg-red-600 hover:scale-110 duration-200 ">Remove
