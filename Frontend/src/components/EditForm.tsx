@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 interface Props {
-  fetchCars: () => void;
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   carToEdit: number
@@ -18,7 +17,7 @@ interface Props {
   
 }
 
-const EditForm: React.FC<Props> = ({ fetchCars, isOpen, setIsOpen, carToEdit, Brand_id, Engine_id, Model_id, Production_year, Color, url}) => {
+const EditForm: React.FC<Props> = ({isOpen, setIsOpen, carToEdit, Brand_id, Engine_id, Model_id, Production_year, Color, url}) => {
   
 
   const [newCar, setNewCar] = useState({
@@ -40,7 +39,6 @@ const EditForm: React.FC<Props> = ({ fetchCars, isOpen, setIsOpen, carToEdit, Br
     e.preventDefault();
     try {
       await axios.put(`http://localhost:3000/admin/cars/${carToEdit}`, newCar);
-      fetchCars();
     } catch (error) {
       console.error('Error adding car:', error);
     }
