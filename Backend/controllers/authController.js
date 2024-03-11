@@ -99,5 +99,21 @@ const getUser = (db) => async (req, res) => {
     })
 }
 
+const getAdmin = (db) => async (req, res) => {
+    const email = res.locals.user;
+    db.query('SELECT admin FROM users WHERE users.email = ?',[email], async (err, results) => {
+        if(err) {
+             console.error(err);
+        }
+        if(results[0].admin = 0){
+             return res.redirect('/');
+        }
+        else{
+             res.status(200).json(results[0].username);
+        }
+   })
+
+} 
+
 
 module.exports = { register, login, logout, getUser }

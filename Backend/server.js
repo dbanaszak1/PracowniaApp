@@ -5,7 +5,7 @@ const carController = require('./controllers/carController');
 const authController = require('./controllers/authController');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const { requireAuth, checkUser } = require('./middleware/authMiddleware');
+const { requireAuth, checkUser, checkAdmin } = require('./middleware/authMiddleware');
 
 
 dotenv.config({path: './.env'})
@@ -42,12 +42,14 @@ app.get('/', (req, res) => {
   res.send('Welcome to the backend.');
 });
 app.get('/api/cars',requireAuth, carController.getCars(db));
+app.get('/api/offer',carController.getOffer2(db));
+app.get('/api/details/:carId', carController.getCarDetails(db));
+//Admin routes
 app.post('/api/cars', carController.createCar(db));
+app.get('/api/cars2',requireAuth, checkAdmin(db), carController.getCarsPage(db));
 app.delete('/admin/cars/:carId', carController.deleteCar(db));
 app.put('/admin/cars/:carId', carController.updateCar(db));
-app.get('/api/offer',carController.getOffer2(db));
-app.get('/api/cars2',requireAuth, carController.getCarsPage(db));
-app.get('/api/details/:carId', carController.getCarDetails(db));
+//Auth routes
 app.post('/auth/register', authController.register(db));
 app.post('/auth/login', authController.login(db));
 app.get('/auth/logout', authController.logout);
