@@ -82,7 +82,7 @@ const LoginForm = () => {
       <div className="py-4">
           <span>Don't have an account?</span>
           <a href="/register">
-            <button className='px-2 border-[1px] mx-2 rounded-xl'>
+            <button className='px-2 border-[1px] mx-2 rounded-xl hover:border-orange-600 duration-500'>
                 Register here!
             </button>
           </a>        

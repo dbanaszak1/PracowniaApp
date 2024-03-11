@@ -54,7 +54,7 @@ const CarsTable: React.FC = () => {
 
   const fetchCars = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/cars2?page=${page}&pageSize=${pageSize}`);
+      const response = await axios.get(`http://localhost:3000/api/cars2?page=${page}&pageSize=${pageSize}`, { withCredentials: true });
       setCars(response.data);
     } catch (error) {
       console.error('Error fetching cars:', error);

@@ -79,4 +79,25 @@ const login = (db) => async (req, res) => {
     })
 }
 
-module.exports = { register, login }
+const logout = (req, res) => { 
+    res.cookie('jwt', '', { maxAge: 1, httpOnly: true,secure: true, sameSite: 'none' });
+    res.status(200).json('Logged out');
+}
+
+const getUser = (db) => async (req, res) => {
+   const email = res.locals.user;
+    db.query('SELECT username FROM users WHERE users.email = ?',[email], async (err, results) => {
+         if(err) {
+              console.error(err);
+         }
+         else if(results.length == 0){
+              return res.send('');
+         }
+         else{
+              res.status(200).json(results[0].username);
+         }
+    })
+}
+
+
+module.exports = { register, login, logout, getUser }

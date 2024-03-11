@@ -5,32 +5,31 @@ import NavBar from '../components/NavBar';
 import CarCard from '../components/CarCard';
 import CoolSlider from '../components/CoolSlider';
 
-interface Car {
-  Car_id: number;
-  Name: string;
-  BrandName: string;
-  Model: string;
-  Production_year: number;
-  Color: string;
-  url: string;
-  Seats: number;
-}
 
-const Home: React.FC = () => {
-  const [cars, setCars] = useState<Car[]>([]);
+const Home = () => {
+  const [user, setUser] = useState(null);
+  
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/cars')
-      .then((response) => setCars(response.data))
-      .catch((error) => console.error('Error fetching cars:', error));
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/auth/user', {
+          withCredentials: true,
+        });
+        setUser(response.data);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+    fetchUser();
   }, []);
 
   return (
     <div className="">
-      <NavBar/>
+      <NavBar user={user}/> 
       <TopImage/>
       <div className="w-2/3 m-auto">
-        <CarCard cars={cars}/>
+        <CarCard/>
       </div>
       <CoolSlider/>
     </div>
