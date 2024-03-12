@@ -1,3 +1,5 @@
+Początkowe założenia:
+
 *1 oferta <-> 1 samochod 
 *1 silnik <-> wiele samochodow
 *1 model <-> wiele samochodow 
@@ -31,6 +33,17 @@ Tabele: (rozwinąc pod projekt 3)
 */admin daje narzedzia do edycji bazy danych later(dodac wiecej ograniczen)
 */offfer/:Car_id wyświetla oferte dla samochodu later(pass more data, front)
 *autoryzacja (admin/user)
-*contact (mail form)
 
+
+Założenia2
+*/ CRUD amdin panel z jedna tabela pozwalająca na edytowanie(z podpowiedziami), usuwanie(z potwierdzeniem),
+     dodawanie (id - auto increment), i wyswietlanie stronicowanej tabeli z samochodami z 
+     okrojonymi danymi - tylko dla usera z przypisanym adminem.
+*/ System logowania i rejestrowania użytkownika, sprawdzanie czy i jaki użytkownik jest aktualnie zalogowany.
+*/ Conditional rendering dla zalogownych użytkowników
+*/ Aspekty wizualne strony - FramerMotion lib animacje
+*/ Contact - Mail form - MailJS?
+*/ Rozbudowanie bazy danych o tabele z datami rezerwacji dla pojazdów - display tego - możliwość zarezerwowania 
+    sobie pojazdu *(może z potwierdzniem na email - MailJS?)
+*/ Mapka z lokalami firmy (fake adresy)
 

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import UserProfileBox from "./UserProfileBox";
 
 interface Props {
   user: string | null;
@@ -42,13 +43,8 @@ const NavBar = ({user}: Props ) => {
         </div> 
         ) :
         ( 
-        <div className='text-sm lg:text-lg font-semibold text-gray-600'>
-            <span>Hello {user}!</span>
-          <button 
-            className='ml-4 text-sm lg:text-lg font-semibold text-gray-600 border-orange-600 border-[1px] px-3 rounded-full hover:bg-orange-600 hover:text-white hover:scale-110 duration-500' 
-            onClick={()=>logout()}>
-            LOGOUT
-          </button> 
+        <div className='text-sm lg:text-lg font-semibold text-gray-600 flex justify-end'>
+            <UserProfileBox user={user} logout={logout}/>
         </div>
         )}
       </div>
