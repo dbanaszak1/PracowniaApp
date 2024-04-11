@@ -7,7 +7,7 @@ const Banner = () => {
         <div className='lg:w-1/2 h-[400px] flex m-auto items-center justify-center'>
             <div className="border border-orange-600 w-72 h-96 overflow-hidden rounded-lg skew-x-12 -skew-y-12">
                 <div className="h-72 w-72 border-b-[1px] border-orange-600">
-                    <img src="https://github.com/dbanaszak1/PracowniaApp/blob/main/Frontend/src/images/userimage.png?raw=true" alt="icon"/>
+                    <img src="src/images/ferrari.png" alt="icon"/>
                 </div>
                 <div className='px-4'>
                     <h2 className="text-lg ">Best price guarantee!</h2>
@@ -16,7 +16,7 @@ const Banner = () => {
             </div>
             <div className="border border-orange-600 w-72 h-96 overflow-hidden rounded-lg -translate-y-8 bg-white z-10">
                 <div className="h-72 w-72 border-b-[1px] border-orange-600">
-                    <img src="https://github.com/dbanaszak1/PracowniaApp/blob/main/Frontend/src/images/userimage.png?raw=true" alt="icon"/>
+                    <img src="src/images/lambo.png" alt="icon"/>
                 </div>
                 <div className='px-4'>
                     <h2 className="text-lg ">New and unique cars!</h2>
@@ -25,7 +25,7 @@ const Banner = () => {
             </div> 
             <div className="border border-orange-600 w-72 h-96 overflow-hidden rounded-lg -skew-x-12 skew-y-12">
                 <div className="h-72 w-72 border-b-[1px] border-orange-600">
-                    <img src="https://github.com/dbanaszak1/PracowniaApp/blob/main/Frontend/src/images/userimage.png?raw=true" alt="icon"/>
+                    <img src="src/images/giftcar.png" alt="icon"/>
                 </div>
                 <div className='px-4'>
                     <h2 className="text-lg ">Many satisfied clients!</h2> 

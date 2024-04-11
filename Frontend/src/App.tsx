@@ -4,6 +4,7 @@ import AdminPanel from './pages/AdminPanel'
 import Offer from './pages/Offer';
 import LoginForm from './pages/LoginForm';
 import Register from './pages/Register';
+import Account from './pages/Account';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/offer/:Car_id" Component={Offer} />
         <Route path="/login" Component={LoginForm} />
         <Route path="/register" Component={Register} />
+        <Route path='/accountDetails' Component={Account}/>
       </Routes>
     </Router>
   );

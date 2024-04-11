@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
+import { useEffect } from 'react';
 
 const Register = () => {
 //changes handler
@@ -8,6 +9,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [user, setUser] = useState(null);
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -42,11 +44,24 @@ const Register = () => {
       console.error('Error:', error);
     }
   };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/auth/user', {
+          withCredentials: true,
+        });
+        setUser(response.data);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
     <>
     <div className="pb-40">
-      <NavBar/>
+      <NavBar user={user}/>
     </div>
     <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-2xl mt-10">
       <h2 className="text-2xl font-semibold mb-4">Sign up</h2>

@@ -25,7 +25,7 @@ const UserProfileBox = ({user,logout}: Props) => {
         </div>
         <ul className={isOpen===true ? "absolute text-center bg-white w-64 py-2 text-[16px] px-10 rounded-b-md border-x border-b border-orange-500 duration-300" : 'hidden'}>
             <li className="text-gray-600 py-1 border-t">Email</li>
-            <li className="text-gray-600 py-1 border-t">Your account</li>
+            <li className="text-gray-600 py-1 border-t"><a href="/accountDetails">Your account</a></li>
             <li className="text-gray-600 py-1 border-t ">Contact</li>
             <li className="text-gray-600 py-1 border-t">          
                 <button 

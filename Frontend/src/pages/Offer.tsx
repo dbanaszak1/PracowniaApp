@@ -21,8 +21,22 @@ const Offer = () => {
   const [offer, setOffer] = useState<OfferData>();
   const [car, setCar] = useState<Car[]>([]);
   const { Car_id } = useParams<{ Car_id: string}>();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/auth/user', {
+          withCredentials: true,
+        });
+        setUser(response.data);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+    fetchUser();
+  }, []);
+  useEffect(() => { 
     const fetchOffer = async () => {
       if (Car_id === undefined) {
         console.error('Car_id is undefined');
@@ -67,7 +81,7 @@ const Offer = () => {
 
   return (
     <>
-    <NavBar/>  
+    <NavBar user={user}/>  
       <div className="bg-gray-100 p-4 pt-40">
         <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-orange-500">Offer Details</h2>
