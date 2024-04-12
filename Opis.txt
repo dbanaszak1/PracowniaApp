@@ -36,6 +36,7 @@ Tabele: (rozwinąc pod projekt 3)
 
 
 Założenia2
+*/ czas zrobić footer
 */ CRUD amdin panel z jedna tabela pozwalająca na edytowanie(z podpowiedziami), usuwanie(z potwierdzeniem),
      dodawanie (id - auto increment), i wyswietlanie stronicowanej tabeli z samochodami z 
      okrojonymi danymi - tylko dla usera z przypisanym adminem.
@@ -43,7 +44,9 @@ Założenia2
 */ Conditional rendering dla zalogownych użytkowników
 */ Aspekty wizualne strony - FramerMotion lib animacje
 */ Contact - Mail form - MailJS?
-*/ Rozbudowanie bazy danych o tabele z datami rezerwacji dla pojazdów - display tego - możliwość zarezerwowania 
+**/ Rozbudowanie bazy danych o tabele z datami rezerwacji dla pojazdów - display tego - możliwość zarezerwowania 
     sobie pojazdu *(może z potwierdzniem na email - MailJS?)
-*/ Mapka z lokalami firmy (fake adresy)
+*/ Mapka z lokalami firmy (fake adres)
+**/ Wyszukiwanie
+**/ Bezpieczeńtwo (SQL Injection - input security)
 
