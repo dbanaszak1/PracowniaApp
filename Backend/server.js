@@ -54,6 +54,7 @@ app.post('/auth/register', authController.register(db));
 app.post('/auth/login', authController.login(db));
 app.get('/auth/logout', authController.logout);
 app.get('/auth/user',checkUser, authController.getUser(db));
+app.get('/auth/userDetails',checkUser, authController.getUserDetails(db));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

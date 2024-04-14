@@ -99,5 +99,19 @@ const getUser = (db) => async (req, res) => {
     })
 }
 
+const getUserDetails = (db) => async (req, res) => {
+    const email = res.locals.user;
+     db.query('SELECT username, email, name, surname FROM users WHERE users.email = ?',[email], async (err, results) => {
+          if(err) {
+               console.error(err);
+          }
+          else if(results.length == 0){
+               return res.send('');            
+          }
+          else{
+               res.status(200).json(results[0]);
+          }
+     })
+ }
 
-module.exports = { register, login, logout, getUser }
+module.exports = { register, login, logout, getUser, getUserDetails }

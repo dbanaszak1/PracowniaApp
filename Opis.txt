@@ -36,7 +36,7 @@ Tabele: (rozwinąc pod projekt 3)
 
 
 Założenia2
-*/ czas zrobić footer
+*/ Czas zrobić footer
 */ CRUD amdin panel z jedna tabela pozwalająca na edytowanie(z podpowiedziami), usuwanie(z potwierdzeniem),
      dodawanie (id - auto increment), i wyswietlanie stronicowanej tabeli z samochodami z 
      okrojonymi danymi - tylko dla usera z przypisanym adminem.
