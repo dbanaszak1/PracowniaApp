@@ -22,8 +22,6 @@ const getCarDetails = (db) => (req, res) => {
       res.json(results)
     }
   });
-
-
 }
 
 const createCar = (db) => async (req, res) => {
@@ -141,5 +139,40 @@ const getCarsPage = (db) => async (req, res) => {
   }
 };
 
+const getCarResevations = (db) => (req, res) => {
+  const { carId } = req.params;
+  const sql = 'SELECT * FROM reservations WHERE car_id = ?;' ;  
+  db.query(sql, carId , (err, results) => { 
+    if(err) {
+      console.error('Error: ',err)
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+    else {
+      res.json(results)
+    }
+  });
+}
 
-module.exports = { getCars, getCarDetails, createCar, updateCar, deleteCar, getOffer2, getCarsPage };
+const createCarResevations =  (db) => async (req, res) => {
+  console.log('Received data:', req.body);
+  const {user_id, car_id, date } = req.body;
+  if (!user_id || !car_id || !date) {
+    return res.status(400).json({ error: 'All fields required' });
+  }
+
+  try {
+    const sql = 'INSERT INTO reservations (user_id, car_id, date) VALUES (?, ?, ?)';
+    const values = [car_id, user_id, date];
+
+    await db.query(sql, values);
+
+    res.json({ message: 'Reservation added to db'});
+  } catch (error) {
+    console.error('Error executing query:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+}
+
+
+module.exports = { getCars, getCarDetails, createCar, updateCar, deleteCar, getOffer2, getCarsPage, getCarResevations, createCarResevations};

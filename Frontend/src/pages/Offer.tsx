@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
+import Reservations from '../components/Reservations';
 
 interface OfferData {
   Car_id: number;
@@ -36,6 +37,7 @@ const Offer = () => {
     };
     fetchUser();
   }, []);
+
   useEffect(() => { 
     const fetchOffer = async () => {
       if (Car_id === undefined) {
@@ -81,7 +83,8 @@ const Offer = () => {
 
   return (
     <>
-    <NavBar user={user}/>  
+    <NavBar user={user}/>
+    <Reservations user={1} car_id={offer.Car_id}/>  
       <div className="bg-gray-100 p-4 pt-40">
         <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-orange-500">Offer Details</h2>
