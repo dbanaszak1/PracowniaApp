@@ -154,15 +154,16 @@ const getCarResevations = (db) => (req, res) => {
 }
 
 const createCarResevations =  (db) => async (req, res) => {
+  console.log('Received');
   console.log('Received data:', req.body);
-  const {user_id, car_id, date } = req.body;
-  if (!user_id || !car_id || !date) {
+  const {user_id, car_id, dateUTC } = req.body;
+  if (!user_id || !car_id || !dateUTC) {
     return res.status(400).json({ error: 'All fields required' });
   }
 
   try {
     const sql = 'INSERT INTO reservations (user_id, car_id, date) VALUES (?, ?, ?)';
-    const values = [car_id, user_id, date];
+    const values = [car_id, user_id, dateUTC];
 
     await db.query(sql, values);
 

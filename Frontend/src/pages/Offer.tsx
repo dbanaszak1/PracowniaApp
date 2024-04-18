@@ -24,7 +24,7 @@ const Offer = () => {
   const { Car_id } = useParams<{ Car_id: string}>();
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchUser = async () => {
       try {
         const response = await axios.get('http://localhost:3000/auth/user', {
@@ -35,10 +35,7 @@ const Offer = () => {
         console.error('Error fetching user:', error);
       }
     };
-    fetchUser();
-  }, []);
 
-  useEffect(() => { 
     const fetchOffer = async () => {
       if (Car_id === undefined) {
         console.error('Car_id is undefined');
@@ -72,6 +69,7 @@ const Offer = () => {
         console.error('Error fetching car:', error);
       }
     }
+    fetchUser();
     fetchCar();
     fetchOffer();
   }, [Car_id]);
@@ -84,9 +82,9 @@ const Offer = () => {
   return (
     <>
     <NavBar user={user}/>
-    <Reservations user={1} car_id={offer.Car_id}/>  
-      <div className="bg-gray-100 p-4 pt-40">
-        <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+      <div className="bg-gray-100 p-4 pt-40 flex flex-wrap justify-center gap-10">
+        {/* Car Card */} 
+        <div className="max-w-md bg-white p-8 rounded-md shadow-md">
           <h2 className="text-2xl font-semibold mb-4 text-orange-500">Offer Details</h2>
           <p className="">Car ID: {offer.Car_id}</p>
           <p className='text-xl'>Now with a discount <span className="text-2xl font-semibold text-orange-500">20%</span></p>
@@ -105,11 +103,16 @@ const Offer = () => {
           <div className="mb-4">
             <img src={car[0].url} alt={`${car[0].BrandName} ${car[0].Name}`} className="w-full h-auto rounded-md" />
           </div>
-          <div className="flex items-center">
-            <button className='border-orange-600 border-[1px] p-2 m-auto text-orange-600 font-semibold hover:bg-orange-600 hover:text-white duration-500 rounded-lg'>RENT ME</button>
-          </div>
         </div>
-      </div>    
+
+        {/* Reservations */}
+        <div className="max-w-md bg-white px-5 py-8 rounded-md shadow-md">
+          <h2 className="text-2xl font-semibold mb-4 text-orange-500">Choose your booking:</h2>
+          <Reservations user={1} car_id={offer.Car_id}/>
+        </div>
+          
+      </div>
+        
     </>
 
   );
