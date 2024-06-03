@@ -94,8 +94,9 @@ const Reservations = ({ user, car_id }: Props) => {
             const response = await axios.post('http://localhost:3000/api/reservations', {
                 user_id,
                 car_id,
-                dateUTC
-            });
+                dateUTC,
+            },
+            {withCredentials: true});
             console.log(response.data);
         } catch (error) {
             console.error('Error creating reservation:', error);

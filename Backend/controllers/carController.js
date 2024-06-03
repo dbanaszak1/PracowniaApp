@@ -163,7 +163,7 @@ const createCarResevations =  (db) => async (req, res) => {
 
   try {
     const sql = 'INSERT INTO reservations (user_id, car_id, date) VALUES (?, ?, ?)';
-    const values = [car_id, user_id, dateUTC];
+    const values = [user_id, car_id,  dateUTC];
 
     await db.query(sql, values);
 
