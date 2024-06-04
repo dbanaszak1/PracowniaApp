@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 12:39 PM
+-- Generation Time: Cze 04, 2024 at 11:09 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -168,8 +168,76 @@ CREATE TABLE `reservations` (
 
 INSERT INTO `reservations` (`id`, `user_id`, `car_id`, `date`, `created_at`, `updated_at`) VALUES
 (1, 11, 1, '2024-04-17', '2024-04-16 17:08:48', '2024-04-16 17:08:48'),
-(2, 12, 6, '2024-04-17', '2024-04-16 17:46:37', '2024-04-16 17:46:37'),
-(3, 11, 1, '2024-04-18', '2024-04-16 17:47:47', '2024-04-16 17:47:47');
+(3, 11, 1, '2024-04-18', '2024-04-16 17:47:47', '2024-04-16 17:47:47'),
+(4, 1, 1, '2024-03-31', '2024-04-18 15:31:28', '2024-04-18 15:31:28'),
+(5, 1, 1, '2024-04-01', '2024-04-18 15:31:28', '2024-04-18 15:31:28'),
+(6, 1, 1, '2024-04-02', '2024-04-18 15:31:41', '2024-04-18 15:31:41'),
+(7, 1, 1, '2024-04-03', '2024-04-18 15:31:54', '2024-04-18 15:31:54'),
+(8, 1, 1, '2024-04-04', '2024-04-18 15:32:15', '2024-04-18 15:32:15'),
+(9, 1, 1, '2024-04-05', '2024-04-18 15:37:25', '2024-04-18 15:37:25'),
+(10, 1, 1, '2024-04-06', '2024-04-18 15:38:44', '2024-04-18 15:38:44'),
+(11, 1, 1, '2024-04-22', '2024-04-18 15:41:28', '2024-04-18 15:41:28'),
+(13, 1, 1, '2024-04-23', '2024-04-18 15:46:02', '2024-04-18 15:46:02'),
+(14, 1, 1, '2024-04-25', '2024-04-18 16:02:08', '2024-04-18 16:02:08'),
+(15, 1, 1, '2024-04-27', '2024-04-18 16:03:03', '2024-04-18 16:03:03'),
+(16, 1, 1, '2024-04-09', '2024-04-18 16:38:14', '2024-04-18 16:38:14'),
+(17, 1, 1, '2024-04-10', '2024-04-18 16:38:14', '2024-04-18 16:38:14'),
+(18, 1, 1, '2024-04-11', '2024-04-18 16:40:07', '2024-04-18 16:40:07'),
+(19, 1, 1, '2024-05-09', '2024-05-09 19:30:30', '2024-05-09 19:30:30'),
+(20, 1, 1, '2024-05-10', '2024-05-09 19:30:30', '2024-05-09 19:30:30'),
+(21, 1, 1, '2024-05-11', '2024-05-09 19:30:30', '2024-05-09 19:30:30'),
+(22, 1, 1, '2024-05-18', '2024-05-09 19:30:30', '2024-05-09 19:30:30'),
+(23, 1, 1, '2024-05-16', '2024-05-09 19:30:30', '2024-05-09 19:30:30'),
+(24, 1, 1, '2024-05-22', '2024-05-09 19:30:35', '2024-05-09 19:30:35'),
+(25, 1, 1, '2024-05-29', '2024-05-09 19:30:35', '2024-05-09 19:30:35'),
+(26, 1, 1, '2024-05-28', '2024-05-09 19:30:35', '2024-05-09 19:30:35'),
+(27, 1, 1, '2024-06-19', '2024-06-03 16:22:43', '2024-06-03 16:22:43'),
+(28, 1, 1, '2024-06-12', '2024-06-03 16:22:43', '2024-06-03 16:22:43'),
+(29, 1, 1, '2024-06-11', '2024-06-03 16:22:43', '2024-06-03 16:22:43'),
+(30, 1, 1, '2024-06-12', '2024-06-03 16:22:50', '2024-06-03 16:22:50'),
+(31, 1, 1, '2024-06-11', '2024-06-03 16:22:50', '2024-06-03 16:22:50'),
+(32, 1, 1, '2024-06-19', '2024-06-03 16:22:50', '2024-06-03 16:22:50'),
+(33, 2, 1, '2024-06-04', '2024-06-03 16:23:37', '2024-06-03 16:23:37'),
+(34, 2, 1, '2024-06-05', '2024-06-03 16:23:37', '2024-06-03 16:23:37'),
+(35, 2, 1, '2024-06-03', '2024-06-03 16:23:37', '2024-06-03 16:23:37'),
+(36, 2, 1, '2024-06-03', '2024-06-03 16:23:44', '2024-06-03 16:23:44'),
+(37, 2, 1, '2024-06-04', '2024-06-03 16:23:44', '2024-06-03 16:23:44'),
+(38, 2, 1, '2024-06-05', '2024-06-03 16:23:44', '2024-06-03 16:23:44'),
+(39, 2, 1, '2024-06-06', '2024-06-03 16:24:10', '2024-06-03 16:24:10'),
+(40, 2, 1, '2024-06-07', '2024-06-03 16:24:10', '2024-06-03 16:24:10'),
+(41, 2, 1, '2024-06-08', '2024-06-03 16:24:10', '2024-06-03 16:24:10'),
+(42, 2, 1, '2024-06-03', '2024-06-03 16:27:13', '2024-06-03 16:27:13'),
+(43, 2, 1, '2024-06-05', '2024-06-03 16:27:13', '2024-06-03 16:27:13'),
+(44, 2, 1, '2024-06-04', '2024-06-03 16:27:13', '2024-06-03 16:27:13'),
+(45, 1, 1, '2024-06-25', '2024-06-03 16:28:10', '2024-06-03 16:28:10'),
+(46, 1, 1, '2024-06-27', '2024-06-03 16:28:10', '2024-06-03 16:28:10'),
+(47, 1, 1, '2024-06-26', '2024-06-03 16:28:10', '2024-06-03 16:28:10'),
+(48, 6, 1, '2024-06-04', '2024-06-03 16:33:27', '2024-06-03 16:33:27'),
+(49, 6, 1, '2024-06-05', '2024-06-03 16:33:27', '2024-06-03 16:33:27'),
+(50, 1, 6, '2024-06-18', '2024-06-03 16:34:08', '2024-06-03 16:34:08'),
+(51, 1, 6, '2024-06-19', '2024-06-03 16:34:08', '2024-06-03 16:34:08'),
+(52, 1, 2, '2024-06-18', '2024-06-03 16:35:15', '2024-06-03 16:35:15'),
+(53, 1, 2, '2024-06-19', '2024-06-03 16:35:15', '2024-06-03 16:35:15'),
+(54, 1, 2, '2024-06-20', '2024-06-03 16:35:15', '2024-06-03 16:35:15'),
+(55, 1, 2, '2024-06-18', '2024-06-03 18:37:25', '2024-06-03 18:37:25'),
+(56, 1, 2, '2024-06-17', '2024-06-03 18:37:25', '2024-06-03 18:37:25'),
+(57, 1, 4, '2024-06-18', '2024-06-03 18:39:01', '2024-06-03 18:39:01'),
+(58, 1, 4, '2024-06-19', '2024-06-03 18:39:01', '2024-06-03 18:39:01'),
+(59, 1, 4, '2024-06-27', '2024-06-03 18:41:48', '2024-06-03 18:41:48'),
+(60, 1, 4, '2024-06-28', '2024-06-03 18:41:48', '2024-06-03 18:41:48'),
+(61, 1, 6, '2024-06-17', '2024-06-03 18:58:35', '2024-06-03 18:58:35'),
+(62, 1, 6, '2024-06-24', '2024-06-03 18:58:35', '2024-06-03 18:58:35'),
+(63, 1, 7, '2024-06-26', '2024-06-03 19:21:59', '2024-06-03 19:21:59'),
+(64, 1, 7, '2024-06-27', '2024-06-03 19:21:59', '2024-06-03 19:21:59'),
+(65, 1, 7, '2024-06-26', '2024-06-03 19:25:15', '2024-06-03 19:25:15'),
+(66, 1, 7, '2024-06-20', '2024-06-03 19:25:15', '2024-06-03 19:25:15'),
+(67, 1, 7, '2024-06-27', '2024-06-03 19:25:15', '2024-06-03 19:25:15'),
+(69, 45, 7, '2024-06-22', '2024-06-03 19:40:45', '2024-06-03 19:40:45'),
+(70, 45, 7, '2024-06-28', '2024-06-04 07:56:01', '2024-06-04 07:56:01'),
+(71, 45, 7, '2024-06-29', '2024-06-04 07:56:01', '2024-06-04 07:56:01'),
+(72, 45, 6, '2024-06-13', '2024-06-04 08:26:33', '2024-06-04 08:26:33'),
+(73, 45, 6, '2024-06-13', '2024-06-04 08:27:06', '2024-06-04 08:27:06'),
+(74, 45, 6, '2024-06-21', '2024-06-04 08:27:06', '2024-06-04 08:27:06');
 
 -- --------------------------------------------------------
 
@@ -192,43 +260,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `surname`, `admin`) VALUES
-(1, 'fdbbdfzdbfgz', 'bdfsdggdf@fdssfd', '$2a$08$bLZ6xk3UHvyqD1P77X0LveGoLLvy.J3LZef4YSH1KuF1lpv0lWmCe', '', '', 0),
-(2, 'fdbbdfzdbfgz', 'bdfsdggdf@fdssfd2', '$2a$08$sBlS0UzcLPIUhHR1oVV/ZOy0XYNZCbC7Y7AXEvdy9SodXZIRxgG02', '', '', 0),
-(3, 'fdbbdfzdbfgz', 'bdfsdggdf@fdssfd2324324', '$2a$08$PaVyCNkuwWMEI7Pw48Hfz.ckByJzzpBE0ji6BL.mL.7gz0QnWUlNO', '', '', 0),
-(4, 'fdbbdfzdbfgz', 'bdfsdggdf@fdssfd232432443', '$2a$08$lFt7MJGrgViAajJ0aCDzouNU//FTRCaRz/BPv2d2o8xessrvF8PVq', '', '', 0),
-(5, 'fdbbdfzdbfgz3234', 'bdfsdggdf@fdssfd232432443324', '$2a$08$uAZwa0cuVwx7enHIHyZUJuLHskFUV3YK10IV4CiF4UlKp4bTGA/Va', '', '', 0),
-(6, 'fdbbdfzdbfgz323433', 'bdfsdggdf@fdssfd2324324433243', '$2a$08$VTVW3v4YlKyPMxut0OeF9eaMhRPPym/AE7Skg8KvcDKIUMNZ4VRnC', '', '', 0),
-(7, 'fdb', 'bdfsdggdf@fds', '$2a$08$K7tq5SgEeNH0sDF55pfy7ucN0SuP3MEmYVnOIPSy8jm8W..6njre6', '', '', 0),
-(8, 'fdb1', 'bdfsdggdf@fds1', '$2a$08$gmbwD6QkGtJTaxmSKxBgMOdOx4t8FY70oRtQppc2mWLy3g93aECIO', '', '', 0),
-(9, 'fdb1', 'bdfsdggdf@fds12', '$2a$08$mLuKzKhhZo5qm8iOO5V2XegduVzKBiFfbp6jid4LY6lf4LftWLZUm', '', '', 0),
-(10, 'fdb1', 'bdfsdggdf@fds12', '$2a$08$r1HL9jgCmhEP/91nm.9Vw.hTqA6I/li3ssNmgcGJ1LzoehOfYHmY6', '', '', 0),
-(11, 'adam', 'adam123@123', '$2a$08$KBfEbZ72tWUfTCDFIMc0zudvb1D/VSZYxB.SHCqLTuBtryJai05ie', '', '', 0),
-(12, 'adam', 'adam123@1234', '$2a$08$jd5Xn/0vmj10LSHjayxGf.OOzHtZcHsWPxii7GgzU4mxmAn4/.13W', '', '', 0),
-(13, 'adam1234', 'adam@spadam.pl', '$2a$08$YfTXldCGTWntrte2t4Q2A.yrLS2NqTsWQAG3u/g9n4Gd42EfN0jo2', '', '', 0),
-(14, 'chuj', 'chuj@chuj', '$2a$08$XCrNwiRjuhLo3/192qAuD.1kXnF/oPOjABVeOrVthmCkOLJrN9ZrG', '', '', 0),
-(15, 'andrzej1', 'andrzej@email.com', '$2a$08$8HFdq4ClWAUGttR05S6onO0sT.wU1ObWHP8SP2J70muC30RLbJnQS', '', '', 0),
-(16, 'dddffwd', 'wewewew@sdd', '$2a$08$P9KC.7tSy2wQPOnl5Mp03eWDbQ2PTz8vNGfTFBkvNwxyjSDRG/VjW', '', '', 0),
-(17, 'wevgrG', 'DFDS@dsfad', '$2a$08$1Otqllb6xSs1hGAum5fjAOBIEeHMb.KZNpzMG1HTrRo3qQH3ztW3q', '', '', 0),
-(18, 'wevgrGfgfg', 'DFDS@dsfadd', '$2a$08$oTa9i3fRILiMuRnHimsHM.9IDXvjYNvVZnyYZCf8R5VDV3cx1RSzy', '', '', 0),
-(19, 'wevgrGfgfg', 'DFDS@dsfaddd', '$2a$08$yB5nvyVPLdHi3wKViLvlder4pXkUEsLFYnLWE.srpRTYBrYiAxl9e', '', '', 0),
-(20, 'wevgrGfgfg', 'DFDS@dsfadddd', '$2a$08$Jt8VrW/HlbEQmV4MWyK2g.Y9GBap58Anpb7nC9LjVga1sLbzEIC..', '', '', 0),
-(21, 'wevgrGfgfg', 'DFDS@dsfaddddd', '$2a$08$tWJgySiWOGAZEhlz.B1HoOcOWgMqhTp2yOOQifBpApcT1KMf2haMC', '', '', 0),
-(23, 'tytytyt', 'httyu@dsf', '$2a$08$UAS5rI9sRTW0hMz5aCsPvegB7Dqrd6CxJqcvA7vLRKjkbP4AkDdBG', '', '', 0),
-(24, 'tytytyt', 'httyu@dsfd', '$2a$08$XzfOXF1WGUnO066gNLALxuetwzB/LOAGZ.PRhVoXFd3F3I8vceMH6', '', '', 0),
-(26, 'tytytyt', 'httyu@dsfdsd', '$2a$08$EIne27TOiUGrN8SP7yh10eW/KfyIyX4B7e7p/1a0LbgTAqpEZ78R.', '', '', 0),
-(27, 'tytytyt', 'httyu@dsfdsdk', '$2a$08$rHdUzEm/fxDZFhGn51rEFudoOejgmxJEufyJzoSPRRWOeqYeALXVK', '', '', 0),
-(28, 'tytytyt', 'adam@spadam13', '$2a$08$pZxHxxWS9XgyK0p1K2ltouQlzq3hEQbIYfsTFQnSHyrDuwdgajoGC', '', '', 0),
-(29, 'tytytyt', 'adam@spadam134', '$2a$08$ytvjBwdkCCi.FenRtw3Z6uco.kb5nACgyS7ZXRYX9JTm7I2Hobt2q', '', '', 0),
-(30, 'gfhgfh', 'fghfg@ddd', '$2a$08$hAP/Kk203ppOQZTy8lRUtur2mgXcE46iwTEH4NfBV.tZfWlUR7LKi', '', '', 0),
-(31, 'dfg', 'dfgdfgfd@dsf', '$2a$08$34WfW8Lmk97e14shDvrcGedP6qzgaekiMVeLOB8HiG5zto/gsWrp.', '', '', 0),
-(32, 'dfg', 'dfgdfgfd@dsfds', '$2a$08$e74ACywz3Cbvv1UkQDYGRO7aZ8OJfSjrnEhGhHwFDn1guaFzfPa2C', '', '', 0),
-(33, 'dfg', 'dfgdfgfd@dsfdsd', '$2a$08$2mAIsXKW4jAiAg/AxVjHJeVyGaGU4Q1pG6yMaCGA0KlwZMYkdXvIu', '', '', 0),
-(34, 'dfg', 'dfgdfgfd@dsfdsdc', '$2a$08$ERQqhMpnD2d/eH6/ruNI7uMQPfT3Slznx/GLu0N6wFyiUZAicc1OK', '', '', 0),
-(35, 'dfg', 'dfgdfgfd@dsfdsdch', '$2a$08$/jz.alJQcXh1wopOjdkeCO58OIHRoc.fu1Fvx2NCQY/VGf6NFyOD.', '', '', 0),
-(36, 'dfg', 'dfgdfgfd@dsfdsdchf', '$2a$08$rwq/21sYpF65kDBcafwRHut860BVJr7oPiEAojxxSW.ztprigmwGm', '', '', 0),
-(37, 'dfg', 'dfgdfgfd@dsfdsdchfd', '$2a$08$kU0CEUypXdUN3.zsV0qsbOrspJIbdQjGuZ4x8P1FrYX6zGGH4sXIq', '', '', 0),
-(38, 'dfg', 'dfgdfgfd@dsfdsdchfdd', '$2a$08$cOVu84J0/gkUSnMaOFnKI.CBfS.gZuZwm0UZO65fdI0Fdf54VsHgO', '', '', 0),
-(39, 'dfg', 'dfgdfgfd@dsfdsdchfddd', '$2a$08$cUYRRu4noApPb21OfdYM5.zl2JFvLRNyjI8Y8lscNeUXn/A./FQIy', '', '', 0),
 (40, 'fddf', 'sddsds@sdd', '$2a$08$8Rk4AXRSQaPLhVhfeZ0u3uRer/ouVraG.BL8SUgo.5jOZ9mwhJy0O', '', '', 0),
 (41, 'Beraalende', '123@123e', '$2a$08$bsckDv1AX/L/T58eMbLaEOZqJ1Q5THGXsb1NjeYhLitdtTFBqa9Wu', '', '', 0),
 (42, 'ukyfgdjhghj', 'adam@spadam.pl12', '$2a$08$UCrz466xsnrVpgW688CcX.UyWbtcQ4oT5cRdMP/PQIEadPCuE0z4i', '', '', 0),
@@ -303,7 +334,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `users`
