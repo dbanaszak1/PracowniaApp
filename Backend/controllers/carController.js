@@ -172,8 +172,27 @@ const createCarResevations =  (db) => async (req, res) => {
     console.error('Error executing query:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-
 }
 
+const getUserReservations = (db) => async (req, res) => {
+  const { userId } = req.params;
+  console.log(userId);
+  if (!userId) {
+    return res.status(400).json({ error: 'No user id' });
+  }
+  else{
+    const sql = 'SELECT id, car_id, created_at, date FROM reservations WHERE user_id = ?'
+    db.query(sql, userId , (err, results) => { 
+      if(err) {
+        console.error('Error: ',err)
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+      else {
+        console.log(results)
+        res.json(results)
+      }   
+  })
 
-module.exports = { getCars, getCarDetails, createCar, updateCar, deleteCar, getOffer2, getCarsPage, getCarResevations, createCarResevations};
+}}
+
+module.exports = { getCars, getCarDetails, createCar, updateCar, deleteCar, getOffer2, getCarsPage, getCarResevations, createCarResevations, getUserReservations};

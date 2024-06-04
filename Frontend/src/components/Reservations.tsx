@@ -98,16 +98,20 @@ const Reservations = ({ user, car_id }: Props) => {
             },
             {withCredentials: true});
             console.log(response.data);
+            window.location.reload();
         } catch (error) {
             console.error('Error creating reservation:', error);
         }
     };
 
     const handleReservationButtonClick = () => {
-        selectedDates.forEach(({ date }) => {
-            console.log(date);
-            createCarReservation(user, car_id, date);
-        });
+        if (window.confirm("Are you sure you want to make a reservation?")) {
+            selectedDates.forEach(({ date }) => {
+                console.log(date);
+                console.log(user)
+                createCarReservation(user, car_id, date);
+            });            
+        }
     };
 
 
@@ -116,7 +120,7 @@ const Reservations = ({ user, car_id }: Props) => {
     }, [])
 
     return (
-        <div className='w-[380px] h-[380px] shadow-xl'>
+        <div className='w-[320px] md:w-[380px] h-[380px] shadow-xl'>
             <Calendar
                 defaultView='month'
                 views={['month']}

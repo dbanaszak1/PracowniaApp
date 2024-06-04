@@ -46,6 +46,7 @@ app.get('/api/offer',carController.getOffer2(db));
 app.get('/api/details/:carId', carController.getCarDetails(db));
 app.get('/api/reservations/:carId',requireAuth, carController.getCarResevations(db));
 app.post('/api/reservations',requireAuth, carController.createCarResevations(db));
+app.get('/api/reservations/user/:userId', carController.getUserReservations(db));
 //Admin routes
 app.post('/api/cars', carController.createCar(db));
 app.get('/api/cars2',requireAuth, checkAdmin(db), carController.getCarsPage(db));
@@ -56,6 +57,7 @@ app.post('/auth/register', authController.register(db));
 app.post('/auth/login', authController.login(db));
 app.get('/auth/logout', authController.logout);
 app.get('/auth/user',checkUser, authController.getUser(db));
+app.get('/auth/userid',checkUser, authController.getUserId(db));
 app.get('/auth/userDetails',checkUser, authController.getUserDetails(db));
 
 

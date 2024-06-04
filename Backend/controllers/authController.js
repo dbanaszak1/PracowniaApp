@@ -99,6 +99,21 @@ const getUser = (db) => async (req, res) => {
     })
 }
 
+const getUserId = (db) => async (req, res) => {
+    const email = res.locals.user;
+     db.query('SELECT id FROM users WHERE users.email = ?',[email], async (err, results) => {
+          if(err) {
+               console.error(err);
+          }
+          else if(results.length == 0){
+               return res.send('');
+          }
+          else{
+               res.status(200).json(results[0].id);
+          }
+     })
+ }
+
 const getUserDetails = (db) => async (req, res) => {
     const email = res.locals.user;
      db.query('SELECT username, email, name, surname FROM users WHERE users.email = ?',[email], async (err, results) => {
@@ -114,4 +129,4 @@ const getUserDetails = (db) => async (req, res) => {
      })
  }
 
-module.exports = { register, login, logout, getUser, getUserDetails }
+module.exports = { register, login, logout, getUser, getUserDetails,getUserId }

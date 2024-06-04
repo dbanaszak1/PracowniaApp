@@ -23,6 +23,7 @@ const Offer = () => {
   const [car, setCar] = useState<Car[]>([]);
   const { Car_id } = useParams<{ Car_id: string}>();
   const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(0);
   const [blur, setBlur] = useState('blur-md');
 
   useEffect(() => { 
@@ -33,6 +34,17 @@ const Offer = () => {
         });
         setUser(response.data);
         blurChange();
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    const getUserId = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/auth/userId', {
+          withCredentials: true,
+        });
+        setUserId(response.data);
       } catch (error) {
         console.error('Error fetching user:', error);
       }
@@ -85,7 +97,8 @@ const Offer = () => {
     fetchUser();
     fetchCar();
     fetchOffer();
-  }, [Car_id, blur]);
+    getUserId();
+  }, [Car_id, blur, user, userId]);
   
 
   if (!offer) {
@@ -112,7 +125,7 @@ const Offer = () => {
           )
         }
         {/* Car Card */} 
-        <div className={`max-w-md bg-white p-8 rounded-md shadow-md max-h-[700px] ${blur}`}>
+        <div className={`w-[440px] bg-white p-8 rounded-md shadow-md max-h-[700px] ${blur}`}>
           <h2 className="text-2xl font-semibold mb-4 text-orange-500">Offer Details</h2>
           <p className="">Car ID: {offer.Car_id}</p>
           <p className='text-xl'>Now with a discount <span className="text-2xl font-semibold text-orange-500">20%</span></p>
@@ -131,9 +144,9 @@ const Offer = () => {
         </div>
 
         {/* Calendar */}
-        <div className={`max-w-md bg-white px-5 py-8 rounded-md shadow-md max-h-[700px] ${blur}`}>
+        <div className={`w-[440px] bg-white px-5 py-8 rounded-md shadow-md max-h-[700px] ${blur}`}>
           <h2 className="text-2xl font-semibold mb-4 text-orange-500">Choose your booking:</h2>
-          <Reservations user={1} car_id={offer.Car_id}/>
+          <Reservations user={userId} car_id={offer.Car_id}/>
         </div>         
       </div>  
     </>
